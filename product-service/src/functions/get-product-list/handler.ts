@@ -7,7 +7,7 @@ import { PRODUCT_LIST } from "@functions/mock-data/product-list";
 
 const getProductList: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
   return formatJSONResponse({
-    request: PRODUCT_LIST,
+    response: PRODUCT_LIST,
     event,
   });
 };
