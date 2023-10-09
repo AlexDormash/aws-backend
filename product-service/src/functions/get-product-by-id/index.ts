@@ -8,7 +8,7 @@ export default {
       http: {
         method: 'post',
         path: 'getProductById',
-        cors: false,
+        cors: true,
         request: {
           schemas: {
             'application/json': schema,
