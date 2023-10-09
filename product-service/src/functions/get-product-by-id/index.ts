@@ -1,5 +1,5 @@
 import { handlerPath } from '@libs/handler-resolver';
-import schema from "@functions/hello/schema";
+import schema from "@functions/get-product-by-id/schema";
 
 export default {
   handler: `${handlerPath(__dirname)}/handler.main`,
