@@ -1,0 +1,95 @@
+---
+swagger: "2.0"
+info:
+  version: "2023-10-09T12:39:20Z"
+  title: "product-service-dev"
+host: "wpwd3ayme3.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+- "https"
+paths:
+  /getProductById:
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "producApiGavimQiKpKyVY9"
+        required: true
+        schema:
+          $ref: "#/definitions/producApiGavimQiKpKyVY9"
+      responses: {}
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /getProductList:
+    get:
+      responses: {}
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /hello:
+    post:
+      consumes:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "producApiGaaHkobBN6Nziq"
+        required: true
+        schema:
+          $ref: "#/definitions/producApiGaaHkobBN6Nziq"
+      responses: {}
+    options:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+definitions:
+  producApiGaaHkobBN6Nziq:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+  producApiGavimQiKpKyVY9:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "string"
