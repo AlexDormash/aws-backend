@@ -11,9 +11,9 @@ export const getProduct: any = (id: string) => {
 
 const getProductById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
   const id = event.pathParameters?.id;
-  const product = getProduct(id)
+  const product = getProduct(id);
 
-  if (id) {
+  if (product) {
     return formatJSONResponse({
       response: product,
       event,
