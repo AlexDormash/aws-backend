@@ -14,3 +14,15 @@ export const formatJSONResponse = (response: Record<string, unknown>) => {
     body: JSON.stringify(response)
   }
 }
+
+export const formatJSONError = (response: Record<string, unknown>) => {
+  return {
+    statusCode: 444,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    },
+    body: JSON.stringify(response)
+  }
+}
+

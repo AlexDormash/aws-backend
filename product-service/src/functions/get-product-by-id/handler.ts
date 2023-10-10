@@ -1,5 +1,5 @@
 import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
+import {formatJSONError, formatJSONResponse} from '@libs/api-gateway';
 import { middyfy } from '@libs/lambda';
 
 import schema from './schema';
@@ -10,13 +10,20 @@ export const getProduct: any = (id: string) => {
 };
 
 const getProductById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  const id = event.body.id;
+  const id = event.pathParameters?.id;
   const product = getProduct(id)
 
-  return formatJSONResponse({
-    response: product,
-    event,
-  });
+  if (id) {
+    return formatJSONResponse({
+      response: product,
+      event,
+    });
+  } else {
+    return formatJSONError({
+      error: 'Product Not Found',
+      event,
+    });
+  }
 };
 
 export const main = middyfy(getProductById);
