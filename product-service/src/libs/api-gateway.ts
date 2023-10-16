@@ -17,7 +17,7 @@ export const formatJSONResponse = (response: Record<string, unknown>) => {
 
 export const formatJSONError = (response: Record<string, unknown>) => {
   return {
-    statusCode: 444,
+    statusCode: 400,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
