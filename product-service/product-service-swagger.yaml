@@ -1,0 +1,99 @@
+---
+swagger: "2.0"
+info:
+  version: "2023-10-10T22:09:30Z"
+  title: "product-service-dev"
+host: "wpwd3ayme3.execute-api.eu-west-1.amazonaws.com"
+basePath: "/dev"
+schemes:
+  - "https"
+paths:
+  /hello:
+    post:
+      consumes:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "producApiGaaHkobBN6Nziq"
+          required: true
+          schema:
+            $ref: "#/definitions/producApiGaaHkobBN6Nziq"
+      responses: {}
+    options:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /product:
+    get:
+      responses: {}
+    options:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+  /product/{id}:
+    get:
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses: {}
+    options:
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        "444":
+          description: "444 Product Not Found"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+definitions:
+  producApiGaaHkobBN6Nziq:
+    type: "object"
+    required:
+      - "name"
+    properties:
+      name:
+        type: "string"
