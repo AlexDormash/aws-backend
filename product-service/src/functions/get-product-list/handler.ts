@@ -1,15 +1,18 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import { formatJSONResponse } from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+import {middyfy} from '@libs/lambda';
+import {dBError, formatJSONResponse} from "@libs/api-gateway";
+import {getProduct, getStocks, joinData} from "@libs/db-resolver";
 
-import schema from './schema';
-import { PRODUCT_LIST } from "@functions/mock-data/product-list";
-
-const getProductList: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  return formatJSONResponse({
-    response: PRODUCT_LIST,
-    event,
-  });
+const getProductList: any = async (event) => {
+    console.log(event);
+    return Promise.all([getProduct(), getStocks()]).then(([products, stocks]) => {
+        const productList = joinData(products, stocks);
+        return formatJSONResponse({
+            response: productList
+        });
+    }, (err) => {
+        return dBError({
+            error: err.name
+        })
+    });
 };
-
 export const main = middyfy(getProductList);

@@ -1,29 +1,20 @@
-import type { ValidatedEventAPIGatewayProxyEvent } from '@libs/api-gateway';
-import {formatJSONError, formatJSONResponse} from '@libs/api-gateway';
-import { middyfy } from '@libs/lambda';
+import {dBError, formatJSONResponse} from '@libs/api-gateway';
+import {middyfy} from '@libs/lambda';
+import {getProduct, getStocks, joinData} from "@libs/db-resolver";
 
-import schema from './schema';
-import { PRODUCT_LIST } from "@functions/mock-data/product-list";
-
-export const getProduct: any = (id: string) => {
-  return PRODUCT_LIST.find((el) => el.id === id);
-};
-
-const getProductById: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) => {
-  const id = event.pathParameters?.id;
-  const product = getProduct(id);
-
-  if (product) {
-    return formatJSONResponse({
-      response: product,
-      event,
+const getProductById: any = async (event) => {
+    console.log(event);
+    const id = event.pathParameters?.id;
+    return Promise.all([getProduct(id), getStocks(id)]).then(([products, stocks]) => {
+        const productList = joinData(products, stocks)[0];
+        return formatJSONResponse({
+            response: productList
+        });
+    }, (err) => {
+        return dBError({
+            error: err.name
+        })
     });
-  } else {
-    return formatJSONError({
-      error: 'Product Not Found',
-      event,
-    });
-  }
 };
 
 export const main = middyfy(getProductById);
