@@ -1,0 +1,6 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"products\": \"[{\\n        \\\"count\\\": 6,\\n        \\\"description\\\": \\\"Short Product Description3\\\",\\n        \\\"id\\\": \\\"test1\\\",\\n        \\\"price\\\": 10,\\n        \\\"title\\\": \\\"ProductNew\\\"\\n    },\\n        {\\n            \\\"count\\\": 7,\\n            \\\"description\\\": \\\"Short Product Description2\\\",\\n            \\\"id\\\": \\\"test2\\\",\\n            \\\"price\\\": 23,\\n            \\\"title\\\": \\\"ProductTop\\\"\\n        }]\"}"
+}
